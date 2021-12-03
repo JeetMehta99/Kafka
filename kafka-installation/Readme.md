@@ -17,6 +17,6 @@ We can capture events with MSK and this will be leveraged to stream the logs. De
 
 `bin/kafka-console-consumer.sh --bootstrap-server BootstrapBrokerString --topic TopicName --from-beginning`
 
-###Key Takeaways:
+###Key Takeaway/Conclusion:
 
 Now that we can use kafka as a Managed Service on AWS, it helps us focus more on processing layer to consume data from MSK and further provide it to the visualization layers.

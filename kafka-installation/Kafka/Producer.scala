@@ -33,8 +33,22 @@ object Producer extends App {
       .map(value => new ProducerRecord[String, String](config.getString("akka.kafka.topic"), value.toString))
       .runWith(Producer.plainSink(producerSettings))
 
-  produce onComplete  {
-    case Success(_) => println("Done"); system.terminate()
-    case Failure(err) => println(err.toString); system.terminate()
+//  produce onComplete {
+//    case Success(_) => println("Done"); system.terminate()
+//    case Failure(err) => println(err.toString); system.terminate()
+//
+//  }
+  Producers.getOrElseUpdate(
+    finalConfig, {
+      Log.info(s"Create Kafka producer , config: $finalConfig")
+      val producer = new KafkaProducer[Array[Byte], Array[Byte]](finalConfig.asJava)
+
+      sys.addShutdownHook {
+        Log.info(s"Close Kafka producer, config: $finalConfig")
+        producer.close()
+      }
+
+      producer
+    })
   }
 }

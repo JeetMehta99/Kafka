@@ -40,7 +40,7 @@ object Producer extends App {
 //  }
   Producers.getOrElseUpdate(
     finalConfig, {
-      Log.info(s"Create Kafka producer , config: $finalConfig")
+      Log.info(s"Create Kafka producer, config: $finalConfig")
       val producer = new KafkaProducer[Array[Byte], Array[Byte]](finalConfig.asJava)
 
       sys.addShutdownHook {

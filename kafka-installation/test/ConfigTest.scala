@@ -20,7 +20,7 @@ class ConfigTest extends AnyFlatSpec {
     assert(address == expected_address)
 
     //Check frequency
-    it should "obtain the Pattern" in {
+    it should "obtain the Frequency" in {
       val config: Config = ConfigFactory.load("application.conf")
       config.getString("randomLogGenerator.Frequency") shouldBe String
   }

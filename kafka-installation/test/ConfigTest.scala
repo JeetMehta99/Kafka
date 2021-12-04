@@ -18,6 +18,11 @@ class ConfigTest extends AnyFlatSpec {
     val address = config.getString("kafka.host")
     val expected_address = config.getString("akka.kafka.producer.kafka-clients.bootstrap.servers")
     assert(address == expected_address)
+
+    //Check frequency
+    it should "obtain the Pattern" in {
+      val config: Config = ConfigFactory.load("application.conf")
+      config.getString("randomLogGenerator.Frequency") shouldBe String
   }
 }
 
@@ -35,5 +40,4 @@ class ConfigTest extends AnyFlatSpec {
     val expected_pattern = config.getString("randomLogGenerator.Pattern")
     assert(endpoint == expected_pattern)
   }
-
 }

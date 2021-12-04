@@ -23,15 +23,7 @@ class ConfigTest extends AnyFlatSpec {
     it should "obtain the Frequency" in {
       val config: Config = ConfigFactory.load("application.conf")
       config.getString("randomLogGenerator.Frequency") shouldBe String
-  }
-}
-
-class ConfigTest extends AnyFlatSpec {
-
-  // Initializing config reader
-  val config = ObtainConfigReference("randomLogGenerator") match {
-    case Some(value) => value
-    case None => throw new RuntimeException("Cannot obtain a reference to the config data.")
+    }
   }
 
   // Testing for Pattern in config
